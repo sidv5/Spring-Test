@@ -1,2 +1,2 @@
-language = "bash"
-run = ""
+language = "java"
+run="cd Spring/Spring-XML && mvn package && java -jar target/spring-xml-tester-0.0.1-SNAPSHOT.jar"
