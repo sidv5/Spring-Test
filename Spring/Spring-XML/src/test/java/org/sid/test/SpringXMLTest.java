@@ -49,10 +49,29 @@ public class SpringXMLTest {
         assertEquals("Practice Throws.",coach.getDailyWorkout());
     }
 
+    @Test
+    @DisplayName("XML Test 4 - Constructor DI")
+    public void constructorDependencyInjectionTest() {
+        context = new ClassPathXmlApplicationContext("context/di/di1Context.xml");
+        Coach coach = context.getBean("myCoach", Coach.class);
+        assertEquals("Great day today",coach.getFortune());
+    }
+
+    @Test
+    @DisplayName("XML Test 5 - Setter DI")
+    public void setterDependencyInjectionTest() {
+        context = new ClassPathXmlApplicationContext("context/di/di1Context.xml");
+        Coach coach = context.getBean("cricketCoach", Coach.class);
+        assertEquals("Practice Bowling",coach.getDailyWorkout());
+        assertEquals("Great day today",coach.getFortune());
+    }
+
     @AfterAll
     static void done() {
         log.info("XML Tests Completed");
-        context.close();
+        if(context != null) {
+            context.close();
+        }
     }
 
 }
