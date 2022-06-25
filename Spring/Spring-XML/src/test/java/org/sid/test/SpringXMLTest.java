@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.sid.spring.xml.Coach;
+import org.sid.spring.xml.CricketCoach;
 import org.springframework.beans.factory.CannotLoadBeanClassException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -64,6 +65,15 @@ public class SpringXMLTest {
         Coach coach = context.getBean("cricketCoach", Coach.class);
         assertEquals("Practice Bowling",coach.getDailyWorkout());
         assertEquals("Great day today",coach.getFortune());
+    }
+
+    @Test
+    @DisplayName("XML Test 6 - Literal Value Injection")
+    public void literalValueInjectionTest() {
+        context = new ClassPathXmlApplicationContext("context/di/di1Context.xml");
+        CricketCoach coach = context.getBean("cricketCoach", CricketCoach.class);
+        assertEquals("testmail@gmail.com",coach.getEmail());
+        assertEquals("kings xi",coach.getTeam());
     }
 
     @AfterAll

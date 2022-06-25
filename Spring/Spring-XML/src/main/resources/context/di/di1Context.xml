@@ -17,6 +17,11 @@
     <!-- setter injection -->
     <bean id="cricketCoach" class="org.sid.spring.xml.CricketCoach">
         <property name="fortuneService" ref="myFortune"/>
+
+        <!-- literal value injection -->
+        <property name="email" value="testmail@gmail.com"/>
+        <property name="team" value="kings xi"/>
+
     </bean>
 
 </beans>
