@@ -26,14 +26,14 @@ public class SpringXMLTest {
     @DisplayName("XML Test 1 - XML Bean Definition")
     public void trackCoachCheck() {
         context = new ClassPathXmlApplicationContext("context/ioc/test1Context.xml");
-        Coach coach = context.getBean("myCoach", Coach.class);
+        Coach coach = context.getBean("trackCoach", Coach.class);
         assertEquals("Run a 5k.",coach.getDailyWorkout());
     }
 
     @Test
     @DisplayName("XML Test 2 - XML Bean Fail")
     public void xmlBeanFailTest() {
-        String expectedFailureMessage = "Cannot find class [org.sid.spring.xml.FailCoach] for bean with name 'myCoach' defined in class path resource [context/test2Context.xml]; nested exception is java.lang.ClassNotFoundException: org.sid.spring.xml.FailCoach";
+        String expectedFailureMessage = "Cannot find class [org.sid.spring.xml.FailCoach] for bean with name 'failCoach' defined in class path resource [context/ioc/test2Context.xml]; nested exception is java.lang.ClassNotFoundException: org.sid.spring.xml.FailCoach";
         Throwable exception = assertThrows(CannotLoadBeanClassException.class, () -> {
             context = new ClassPathXmlApplicationContext("context/ioc/test2Context.xml");
         });
@@ -44,8 +44,8 @@ public class SpringXMLTest {
     @Test
     @DisplayName("XML Test 3 - IOC Test")
     public void basketBallCoachCheck() {
-        context = new ClassPathXmlApplicationContext("context/ioc/test3Context.xml");
-        Coach coach = context.getBean("myCoach", Coach.class);
+        context = new ClassPathXmlApplicationContext("context/ioc/test1Context.xml");
+        Coach coach = context.getBean("basketballCoach", Coach.class);
         assertEquals("Practice Throws.",coach.getDailyWorkout());
     }
 

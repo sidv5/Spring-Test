@@ -6,8 +6,9 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-    
 
-	<bean id="myCoach" class="org.sid.spring.xml.TrackCoach"></bean>
+	<bean id="trackCoach" class="org.sid.spring.xml.TrackCoach"></bean>
+
+	<bean id="basketballCoach" class="org.sid.spring.xml.BasketballCoach"></bean>
 
 </beans>
