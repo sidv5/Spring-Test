@@ -7,6 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--  load properties file  -->
+    <context:property-placeholder location="classpath:properties/app.properties"/>
+
     <bean id="myFortune" class="org.sid.spring.xml.HappyFortuneService"></bean>
 
     <!-- constructor injection -->
@@ -18,9 +21,9 @@
     <bean id="cricketCoach" class="org.sid.spring.xml.CricketCoach">
         <property name="fortuneService" ref="myFortune"/>
 
-        <!-- literal value injection -->
-        <property name="email" value="testmail@gmail.com"/>
-        <property name="team" value="kings xi"/>
+        <!-- property file value injection -->
+        <property name="email" value="${foo.email}"/>
+        <property name="team" value="${foo.team}"/>
     </bean>
 
 </beans>

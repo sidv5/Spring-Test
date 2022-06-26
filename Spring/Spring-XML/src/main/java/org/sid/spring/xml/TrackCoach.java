@@ -1,5 +1,8 @@
 package org.sid.spring.xml;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class TrackCoach implements Coach{
 
 	private FortuneService fortuneService;

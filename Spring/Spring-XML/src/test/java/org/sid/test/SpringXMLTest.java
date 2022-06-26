@@ -10,8 +10,7 @@ import org.sid.spring.xml.CricketCoach;
 import org.springframework.beans.factory.CannotLoadBeanClassException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Log
 public class SpringXMLTest {
@@ -19,7 +18,7 @@ public class SpringXMLTest {
     private static ClassPathXmlApplicationContext context;
 
     @BeforeAll
-    static void start(){
+    static void start() {
         log.info("Beginning XML Tests");
     }
 
@@ -28,7 +27,7 @@ public class SpringXMLTest {
     public void trackCoachCheck() {
         context = new ClassPathXmlApplicationContext("context/ioc/test1Context.xml");
         Coach coach = context.getBean("trackCoach", Coach.class);
-        assertEquals("Run a 5k.",coach.getDailyWorkout());
+        assertEquals("Run a 5k.", coach.getDailyWorkout());
     }
 
     @Test
@@ -47,7 +46,7 @@ public class SpringXMLTest {
     public void basketBallCoachCheck() {
         context = new ClassPathXmlApplicationContext("context/ioc/test1Context.xml");
         Coach coach = context.getBean("basketballCoach", Coach.class);
-        assertEquals("Practice Throws.",coach.getDailyWorkout());
+        assertEquals("Practice Throws.", coach.getDailyWorkout());
     }
 
     @Test
@@ -55,7 +54,7 @@ public class SpringXMLTest {
     public void constructorDependencyInjectionTest() {
         context = new ClassPathXmlApplicationContext("context/di/di1Context.xml");
         Coach coach = context.getBean("myCoach", Coach.class);
-        assertEquals("Great day today",coach.getFortune());
+        assertEquals("Great day today", coach.getFortune());
     }
 
     @Test
@@ -63,8 +62,8 @@ public class SpringXMLTest {
     public void setterDependencyInjectionTest() {
         context = new ClassPathXmlApplicationContext("context/di/di1Context.xml");
         Coach coach = context.getBean("cricketCoach", Coach.class);
-        assertEquals("Practice Bowling",coach.getDailyWorkout());
-        assertEquals("Great day today",coach.getFortune());
+        assertEquals("Practice Bowling", coach.getDailyWorkout());
+        assertEquals("Great day today", coach.getFortune());
     }
 
     @Test
@@ -72,14 +71,41 @@ public class SpringXMLTest {
     public void literalValueInjectionTest() {
         context = new ClassPathXmlApplicationContext("context/di/di1Context.xml");
         CricketCoach coach = context.getBean("cricketCoach", CricketCoach.class);
-        assertEquals("testmail@gmail.com",coach.getEmail());
-        assertEquals("kings xi",coach.getTeam());
+        assertEquals("testmail@gmail.com", coach.getEmail());
+        assertEquals("kings xi", coach.getTeam());
+    }
+
+    @Test
+    @DisplayName("XML Test 7 - Literal Value from Property File")
+    public void propertyFileInjectionTest() {
+        context = new ClassPathXmlApplicationContext("context/di/di2Context.xml");
+        CricketCoach coach = context.getBean("cricketCoach", CricketCoach.class);
+        assertEquals("testmail@gmail.com", coach.getEmail());
+        assertEquals("kingsxi", coach.getTeam());
+    }
+
+    @Test
+    @DisplayName("XML Test 8 - Singleton Bean Scope")
+    public void singletonBeanScopeTest() {
+        context = new ClassPathXmlApplicationContext("context/beanScope/beanScope1-Context.xml");
+        Coach coach = context.getBean("myCoach", Coach.class);
+        Coach newcoach = context.getBean("myCoach", Coach.class);
+        assertEquals(coach, newcoach);
+    }
+
+    @Test
+    @DisplayName("XML Test 9 - Prototype Bean Scope")
+    public void prototypeBeanScopeTest() {
+        context = new ClassPathXmlApplicationContext("context/beanScope/beanScope2-Context.xml");
+        Coach coach = context.getBean("myCoach", Coach.class);
+        Coach newcoach = context.getBean("myCoach", Coach.class);
+        assertNotEquals(coach, newcoach);
     }
 
     @AfterAll
     static void done() {
         log.info("XML Tests Completed");
-        if(context != null) {
+        if (context != null) {
             context.close();
         }
     }
