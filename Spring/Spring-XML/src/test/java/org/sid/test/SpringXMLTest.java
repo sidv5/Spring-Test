@@ -102,6 +102,15 @@ public class SpringXMLTest {
         assertNotEquals(coach, newcoach);
     }
 
+    @Test
+    @DisplayName("XML Test 10 - Bean Lifecycle")
+    public void beanLifecycleTest() {
+        context = new ClassPathXmlApplicationContext("context/beanScope/beanLifecycle1-Context.xml");
+        Coach coach = context.getBean("myCoach", Coach.class);
+        assertEquals("Practice Kicking", coach.getDailyWorkout());
+        // check for init and destroy s.out
+    }
+
     @AfterAll
     static void done() {
         log.info("XML Tests Completed");
