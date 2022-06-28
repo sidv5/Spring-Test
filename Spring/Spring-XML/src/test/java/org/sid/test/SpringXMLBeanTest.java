@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Log
-public class SpringXMLTest {
+public class SpringXMLBeanTest {
 
     private static ClassPathXmlApplicationContext context;
 
