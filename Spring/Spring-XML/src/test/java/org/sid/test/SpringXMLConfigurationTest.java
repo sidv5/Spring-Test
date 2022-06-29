@@ -28,6 +28,14 @@ public class SpringXMLConfigurationTest {
         assertEquals("Bark!", animal.makeSound());
     }
 
+    @Test
+    @DisplayName("Configuration Test 2 - Default Name Component Scan")
+    public void defaultComponentNameCheck() {
+        context = new ClassPathXmlApplicationContext("context/componentScan/componentScan1-context.xml");
+        Animal animal = context.getBean("horse", Animal.class);
+        assertEquals("Neigh!", animal.makeSound());
+    }
+
     @AfterAll
     static void done() {
         log.info("XML Configuration Tests Completed");
