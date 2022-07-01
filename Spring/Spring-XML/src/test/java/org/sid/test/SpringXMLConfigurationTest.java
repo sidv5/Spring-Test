@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.sid.component.scan.Animal;
+import org.sid.component.scan.autowired.FeralAnimal;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,6 +35,15 @@ public class SpringXMLConfigurationTest {
         context = new ClassPathXmlApplicationContext("context/componentScan/componentScan1-context.xml");
         Animal animal = context.getBean("horse", Animal.class);
         assertEquals("Neigh!", animal.makeSound());
+    }
+
+    @Test
+    @DisplayName("Configuration Test 3 - Constructor Injection")
+    public void constructorInjectionCheck() {
+        context = new ClassPathXmlApplicationContext("context/componentScan/componentScan2-context.xml");
+        FeralAnimal animal = context.getBean("tiger", FeralAnimal.class);
+        assertEquals("Meow!", animal.makeSound());
+        assertEquals("Meat", animal.getTodaysFood());
     }
 
     @AfterAll
