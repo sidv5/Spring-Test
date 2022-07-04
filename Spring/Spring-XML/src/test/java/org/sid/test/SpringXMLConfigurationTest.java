@@ -46,6 +46,33 @@ public class SpringXMLConfigurationTest {
         assertEquals("Meat", animal.getTodaysFood());
     }
 
+    @Test
+    @DisplayName("Configuration Test 4 - Setter Injection")
+    public void setterInjectionCheck() {
+        context = new ClassPathXmlApplicationContext("context/componentScan/componentScan2-context.xml");
+        FeralAnimal animal = context.getBean("wolf", FeralAnimal.class);
+        assertEquals("Howl!", animal.makeSound());
+        assertEquals("Meat", animal.getTodaysFood());
+    }
+
+    @Test
+    @DisplayName("Configuration Test 5 - Method Injection")
+    public void methodInjectionCheck() {
+        context = new ClassPathXmlApplicationContext("context/componentScan/componentScan2-context.xml");
+        FeralAnimal animal = context.getBean("lion", FeralAnimal.class);
+        assertEquals("Roar!", animal.makeSound());
+        assertEquals("Meat", animal.getTodaysFood());
+    }
+
+    @Test
+    @DisplayName("Configuration Test 6 - Field Injection")
+    public void fieldInjectionCheck() {
+        context = new ClassPathXmlApplicationContext("context/componentScan/componentScan2-context.xml");
+        FeralAnimal animal = context.getBean("fox", FeralAnimal.class);
+        assertEquals("Scream!", animal.makeSound());
+        assertEquals("Meat", animal.getTodaysFood());
+    }
+
     @AfterAll
     static void done() {
         log.info("XML Configuration Tests Completed");
