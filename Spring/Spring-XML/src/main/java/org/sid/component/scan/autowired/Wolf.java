@@ -1,6 +1,5 @@
 package org.sid.component.scan.autowired;
 
-import org.sid.spring.xml.FortuneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

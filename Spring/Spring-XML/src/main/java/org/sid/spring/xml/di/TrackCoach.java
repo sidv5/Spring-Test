@@ -1,18 +1,18 @@
-package org.sid.spring.xml;
+package org.sid.spring.xml.di;
 
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class TrackCoach implements Coach{
+public class TrackCoach implements Coach {
 
 	private FortuneService fortuneService;
 
-	public TrackCoach(FortuneService fortuneService){
-		this.fortuneService = fortuneService;
-	}
-
 	public String getDailyWorkout() {
 		return "Run a 5k.";
+	}
+
+	public TrackCoach(FortuneService myFortune){
+		this.fortuneService = myFortune;
 	}
 
 	@Override

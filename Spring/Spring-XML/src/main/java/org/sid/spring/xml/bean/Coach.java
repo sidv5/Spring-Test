@@ -1,8 +1,7 @@
-package org.sid.spring.xml;
+package org.sid.spring.xml.bean;
 
 public interface Coach {
 	
 	public String getDailyWorkout();
 
-	public String getFortune();
 }

@@ -1,4 +1,4 @@
-package org.sid.spring.xml;
+package org.sid.spring.xml.di;
 
 public class HappyFortuneService implements FortuneService{
     @Override

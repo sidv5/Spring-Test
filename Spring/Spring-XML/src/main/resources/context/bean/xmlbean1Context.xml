@@ -7,8 +7,8 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="trackCoach" class="org.sid.spring.xml.TrackCoach"></bean>
+	<bean id="trackCoach" class="org.sid.spring.xml.bean.TrackCoach"></bean>
 
-	<bean id="basketballCoach" class="org.sid.spring.xml.BasketballCoach"></bean>
+	<bean id="basketballCoach" class="org.sid.spring.xml.bean.BasketballCoach"></bean>
 
 </beans>

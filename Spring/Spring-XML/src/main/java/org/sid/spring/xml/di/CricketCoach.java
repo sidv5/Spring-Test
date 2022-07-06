@@ -1,9 +1,9 @@
-package org.sid.spring.xml;
+package org.sid.spring.xml.di;
 
 import lombok.extern.java.Log;
 
 @Log
-public class CricketCoach implements Coach{
+public class CricketCoach implements Coach {
 
     private FortuneService fortuneService;
 

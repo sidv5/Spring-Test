@@ -7,15 +7,15 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="myFortune" class="org.sid.spring.xml.HappyFortuneService"></bean>
+    <bean id="myFortune" class="org.sid.spring.xml.di.HappyFortuneService"></bean>
 
     <!-- constructor injection -->
-    <bean id="myCoach" class="org.sid.spring.xml.TrackCoach">
+    <bean id="myCoach" class="org.sid.spring.xml.di.TrackCoach">
         <constructor-arg ref="myFortune"/>
     </bean>
 
     <!-- setter injection -->
-    <bean id="cricketCoach" class="org.sid.spring.xml.CricketCoach">
+    <bean id="cricketCoach" class="org.sid.spring.xml.di.CricketCoach">
         <property name="fortuneService" ref="myFortune"/>
 
         <!-- literal value injection -->

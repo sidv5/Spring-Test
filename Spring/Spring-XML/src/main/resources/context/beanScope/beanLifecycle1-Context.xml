@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="myCoach" class="org.sid.spring.xml.FootballCoach"
+	<bean id="myCoach" class="org.sid.spring.xml.beanscope.FootballCoach"
 		init-method="myStartupStuff" destroy-method="myCleanupStuff"></bean>
 
 </beans>

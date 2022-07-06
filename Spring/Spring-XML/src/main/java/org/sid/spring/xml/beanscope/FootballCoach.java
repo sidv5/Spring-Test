@@ -1,9 +1,10 @@
-package org.sid.spring.xml;
+package org.sid.spring.xml.beanscope;
 
 import lombok.NoArgsConstructor;
 
+
 @NoArgsConstructor
-public class FootballCoach implements Coach{
+public class FootballCoach implements Coach {
 
 	private FortuneService fortuneService;
 
